@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}BC Blog | {{title}} Düzenle{% endblock title %}
+
+{% block body %}
+
+{% from "includes/formhelpers.html" import render_field %}
+
+<h3>Makale Güncelle</h3>
+<hr>
+
+<div class="container d-flex justify-content-center">
+    <form method="POST" style="width:75%">
+
+        {{render_field(form.title, class='form-control')}}
+        {{render_field(form.content, class='form-control', style="height: 500px")}}
+
+        <div class="d-grid gap-2">
+            <button style="width: 100%" type="submit" class="btn btn-outline-primary">Makaleyi Güncelle</button>
+        </div>
+    </form>
+
+</div>
+
+{% endblock body %}

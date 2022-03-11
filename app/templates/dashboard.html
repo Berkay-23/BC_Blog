@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %}BC Blog | Kontrol Paneli{% endblock title %}
+
+{% block body %}
+<h3>Kontrol Paneli</h3>
+<small>Hoşgeldin, <b>{{session['username']}}</b></small>
+
+<hr>
+<a href="/addarticle" class="btn btn-primary">Makale Ekle</a>
+<hr>
+
+{% if articles %}
+
+<div class="container jumbotron bg-dark p-3">
+
+    <table class="table table-light table-hover text-center m-0">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Başlık</th>
+                <th scope="col">Yazar</th>
+                <th scope="col">Tarih</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <th scope="row">{{article.id}}</th>
+                <td class="text-left"><a style="text-decoration : none" class="text-monospace" href="article/{{article.id}}"><b>{{article.title}}</b></a></td>
+                <td>{{article.author}}</td>
+                <td>{{article.created_date}}</td>
+                <td><a class="btn btn-info" href="/edit/{{article.id}}" role="button">Güncelle</a></td>
+                <td><a class="btn btn-danger" href="/delete/{{article.id}}" role="button">Sil</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% else %}
+
+<div class="alert alert-danger" role="alert">
+    Henüz bir makaleniz bulunmuyor yeni bir malale oluşturmak için <a href="/addarticle"><b>tıklayınız</b></a>.
+</div>
+
+{% endif %}
+
+
+
+{% endblock body %}

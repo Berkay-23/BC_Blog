@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="/">BC Blog</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="/about">Hakkımda</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/articles">Makaleler</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+
+            {% if session['logged_in'] %}
+
+            <li class="nav-item mr-md-3">
+                <button type="button" class="btn btn-outline-light" id="login_btn" onclick="dashboardClick()">Kontrol Paneli</button>
+            </li>
+            
+            <li class="nav-item mr-md-3">
+                <!-- <a href="#" class="list-group-item  list-group-item-danger">Çıkış Yap</a> -->
+                <button type="button" class="btn btn-outline-danger" id="login_btn" onclick="logoutClick()">Çıkış Yap</button>
+            </li>
+
+            {% else %}
+
+            <li class="nav-item active mr-md-3">
+                <!-- <a href="#" class="list-group-item list-group-item-success">Giriş Yap</a> -->
+                <button type="button" class="btn btn-outline-warning" id="register_btn" onclick="registerClick()">Kayıt Ol</button>
+            </li>
+
+            <li class="nav-item mr-md-3">
+                <!-- <a href="#" class="list-group-item  list-group-item-warning">Kayıt Ol</a> -->
+                <button type="button" class="btn btn-outline-success" id="login_btn" onclick="loginClick()">Giriş Yap</button>
+            </li>
+
+            {% endif %}
+            
+        </ul>
+
+    </div>
+</nav>
+
+<script>
+    function registerClick() {
+        window.location = window.location.origin + '/register';
+    }
+
+    function loginClick() {
+        window.location = window.location.origin + '/login';
+    }
+
+    function logoutClick() {
+        window.location = window.location.origin + '/logout';
+    }
+
+    function dashboardClick(){
+        window.location = window.location.origin + '/dashboard';
+    }
+</script>

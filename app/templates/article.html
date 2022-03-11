@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %}BC Blog | {{article.title}} {% endblock title %}
+
+{% block body %}
+
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <span>Bu makale <b>{{article.author}}</b> tarafından <b>{{article.created_date}}</b> tarihinde oluşturuldu.</span>
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="container">
+
+    <div class="card bg-light border-info mt-4">
+        <div class="card-header text-info">
+            <h3>{{article.title}}</h3>
+        </div>
+        <div class="card-body">
+            {{article.content|safe}}
+        </div>
+        <div class="card-footer text-muted d-flex justify-content-between">
+            <span>Yazar : <b>{{article.author}}</b></span>
+            <span>Oluşturma tarihi : <b>{{article.created_date}}</b></span>
+        </div>
+    </div>
+
+</div>
+
+{% endblock body%}

@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}BC Blog | Makaleler{% endblock title %}
+
+{% block body %}
+
+<h3>Makaleler</h3>
+<hr>
+
+<form class="form-inline" action="/search" method="POST">
+    <div class="d-flex align-content-center flex-wrap justify-content-end mb-3" style="width:100%">
+        <input class="form-control mr-sm-2" name="keyword" placeholder="Anahtar kelime giriniz.">
+        <button class="btn btn-outline-info my-2 my-sm-0">Makale Ara</button>
+    </div>
+</form>
+
+{% if articles %}
+
+<ul class="list-group">
+    {% for article in articles %}
+    <li class="list-group-item"><a href="article/{{article.id}}" class="text-monospace">{{article.title}}</a></li>
+    {% endfor %}
+</ul>
+
+{% else %}
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>!</strong> Bu blogda henüz bir makale bulunmuyor
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+{% endif %}
+
+{% endblock body %}

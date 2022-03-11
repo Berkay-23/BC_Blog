@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %}BC Blog | Kayıt Ol{% endblock title %}
+
+{% block body %}
+
+{% from "includes/formhelpers.html" import render_field %}
+
+<h3>Kayıt Olun</h3>
+<hr>
+
+<div class="container d-flex justify-content-center">
+    <form method="POST" style="width:75%">
+
+        {{render_field(form.name, class='form-control')}}
+        {{render_field(form.username, class='form-control')}}
+        {{render_field(form.email, class='form-control')}}
+        {{render_field(form.password, class='form-control')}}
+        {{render_field(form.confirm, class='form-control')}}
+
+        <!-- 
+            {{form.name.label()}}
+            {{form.name(class='form-control')}} ...
+        -->
+    
+        <div class="d-grid gap-2">
+            <button style="width: 100%" type="submit" class="btn btn-outline-primary">Kaydol</button>
+        </div>
+    </form>
+    
+</div>
+{% endblock body %}
